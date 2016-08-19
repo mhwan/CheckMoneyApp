@@ -4,5 +4,5 @@
     android:id="@+id/splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SplashActivity">
+    tools:context="com.app.checkmoney.Activity.SplashActivity">
 </RelativeLayout>

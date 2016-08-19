@@ -1,6 +1,7 @@
-package com.moneycheck.checkmoneyapp.Activity;
+package com.app.checkmoney.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,8 +26,15 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
         hideEverything();
         // 이미지 리소스 주소 넣어줄것
-        setBackgroundImage(findViewById(R.id.splash), 0);
-
+        setBackgroundImage(findViewById(R.id.splash), R.drawable.Splash);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, SPLASH_DELAY_TIME);
     }
 
     @Override

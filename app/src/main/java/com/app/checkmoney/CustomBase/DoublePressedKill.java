@@ -1,9 +1,9 @@
-package com.moneycheck.checkmoneyapp.CustomBase;
+package com.app.checkmoney.CustomBase;
 
 import android.app.Activity;
 import android.widget.Toast;
 
-import com.moneycheck.checkmoneyapp.Util.AppUtility;
+import com.app.checkmoney.Util.AppUtility;
 
 /**
  * Created by Mhwan on 2016. 8. 19..

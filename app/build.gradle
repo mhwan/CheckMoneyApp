@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.moneycheck.checkmoneyapp"
+        applicationId "com.app.checkmoney"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

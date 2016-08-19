@@ -1,4 +1,4 @@
-package com.moneycheck.checkmoneyapp.CustomUi;
+package com.app.checkmoney.CustomUi;
 
 import android.app.Dialog;
 import android.content.Context;
