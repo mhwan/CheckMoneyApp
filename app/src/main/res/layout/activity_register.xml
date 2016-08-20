@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="11"
+    android:background="@color/colorPrimarybg"
+    tools:context="com.app.checkmoney.Activity.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/root_register"
+        android:layout_weight="4">
+
+        <FrameLayout
+            android:id="@+id/button_edit_profile"
+            android:layout_width="118dp"
+            android:layout_height="118dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_profile"
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_gravity="center"
+                android:src="@drawable/image_default_profile"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="4dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:src="@mipmap/ic_add_photo" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/input_register_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimarybg"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:paddingTop="14dp"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextLabel"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterOverflowTextAppearance="@style/counterOverride"
+            app:counterTextAppearance="@style/counterText">
+
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:hint="이름"
+                android:textColor="@color/colorAccentBlack"
+                android:textColorHint="@color/colorAccentLight"
+                android:textSize="15sp"
+                android:theme="@style/EditTextTheme" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/input_phnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="휴대폰 번호"
+                android:inputType="phone"
+                android:textColor="@color/colorAccentBlack"
+                android:textColorHint="@color/colorAccentLight"
+                android:textSize="15sp"
+                android:theme="@style/EditTextTheme" />
+
+        </android.support.design.widget.TextInputLayout>
+        <!--
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textColor="@color/colorPrimaryDarkFont"
+                android:textSize="14sp" />
+
+            <EditText
+                android:theme="@style/EditTextTheme"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:textSize="15sp"
+                android:hint="이름을 입력하세요."
+                android:textColorHint="@color/colorAccentLight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴대폰 번호"
+                android:textColor="@color/colorPrimaryDarkFont"
+                android:textSize="14sp" />
+
+            <EditText
+                android:theme="@style/EditTextTheme"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:hint="휴대폰 번호를 입력하세요."
+                android:textColorHint="@color/colorAccentLight"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout> -->
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginRight="34dp"
+        android:background="@drawable/bg_general_button"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="회원가입"
+        android:textColor="@color/colorWhite"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+</LinearLayout>

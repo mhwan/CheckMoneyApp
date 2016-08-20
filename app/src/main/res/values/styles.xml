@@ -13,4 +13,34 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="windowActionBar">false</item>
     </style>
+
+    <style name="RegisterTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryLight</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="EditTextTheme">
+        <!-- colorControlNormal 포커스가 안되었을때 -->
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimaryDarkFont</item>
+        <!-- colorControlActivated 포커스 되었을때 -->
+    </style>
+
+    <style name="TextLabel" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorAccentLight</item>
+        <item name="android:textSize">13sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimaryDarkFont</item>
+    </style>
+
+    <style name="counterText">
+        <item name="android:textColor">@color/colorAccentLight</item>
+    </style>
+
+    <style name="counterOverride">
+        <item name="android:textColor">@color/colorAccentRed</item>
+    </style>
 </resources>

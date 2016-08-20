@@ -1,92 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
     tools:context="com.app.checkmoney.Activity.LoginActivity">
 
     <ImageView
-        android:layout_marginTop="62dp"
-        android:layout_marginBottom="74dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:src="@mipmap/logo_login"/>
-    
-    
-    <RelativeLayout
-        android:id="@+id/login_for_kakao"
-        android:layout_width="match_parent"
-        android:background="#ffeb34"
-        android:layout_height="48dp">
+        android:id="@+id/logo_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@mipmap/logo_login" />
 
-        <ImageView
-            android:id="@+id/logo_kakao"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="#f7e53b"
-            android:layout_width="48dp"
-            android:src="@mipmap/image_kakao"
-            android:padding="12dp"
-            android:layout_height="48dp"/>
+    <com.app.checkmoney.CustomUi.FadeInLinearlayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_marginBottom="54dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_toRightOf="@id/logo_kakao"
+        <RelativeLayout
+            android:id="@+id/login_for_kakao"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="#3c1e1e"
-            android:text="카카오톡으로 로그인"/>
-    </RelativeLayout>
+            android:layout_height="48dp"
+            android:background="#ffeb34">
 
-    <RelativeLayout
-        android:layout_marginTop="24dp"
-        android:id="@+id/login_for_register"
-        android:layout_width="match_parent"
-        android:background="#f0f0f0"
-        android:layout_height="48dp">
+            <ImageView
+                android:id="@+id/logo_kakao"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="#f7e53b"
+                android:padding="12dp"
+                android:src="@mipmap/image_kakao" />
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/logo_kakao"
+                android:gravity="center"
+                android:text="카카오톡으로 로그인"
+                android:textColor="#3c1e1e"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="#474747"
-            android:text="일반 회원가입"/>
-    </RelativeLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/text_or"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="또는"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:textColor="#defaed"
+                android:textSize="12sp"/>
 
-    <!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_gravity="center_vertical"
-        android:layout_height="8dp">
-        <View
-            android:layout_alignParentLeft="true"
-            android:layout_width="18dp"
-            android:layout_height="0.6dp"
-            android:background="#a1f4d7"/>
+            <View
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/text_or"
+                android:layout_centerVertical="true"
+                android:layout_width="12dp"
+                android:layout_height="0.8dp"
+                android:background="#a1f4d7"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="또는"
-            android:textColor="#defaed"
-            android:textSize="13sp"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/text_or"
+                android:layout_centerVertical="true"
+                android:layout_width="12dp"
+                android:layout_height="0.8dp"
+                android:background="#a1f4d7"/>
+        </RelativeLayout>
 
-        <View
-            android:layout_alignParentRight="true"
-            android:layout_width="18dp"
-            android:layout_height="0.6dp"
-            android:background="#a1f4d7"/>
-    </RelativeLayout>
-    -->
-    
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/login_for_register"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#f0f0f0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="일반 회원가입"
+                android:textColor="#474747"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </com.app.checkmoney.CustomUi.FadeInLinearlayout>
+</RelativeLayout>

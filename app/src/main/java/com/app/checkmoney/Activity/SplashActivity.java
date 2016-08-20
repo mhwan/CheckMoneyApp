@@ -3,7 +3,6 @@ package com.app.checkmoney.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.app.checkmoney.Util.AppUtility;
 import com.moneycheck.checkmoneyapp.R;
 
 /**
@@ -26,13 +26,15 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
         hideEverything();
         // 이미지 리소스 주소 넣어줄것
-        setBackgroundImage(findViewById(R.id.splash), R.drawable.Splash);
+        setBackgroundImage(findViewById(R.id.logo_splash), R.mipmap.logo_login);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, R.anim.fade_out);
                 finish();
+
             }
         }, SPLASH_DELAY_TIME);
     }
@@ -43,13 +45,10 @@ public class SplashActivity extends Activity {
     }
 
     private void setBackgroundImage(View view, int resourceId){
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        options.inSampleSize = 2;
-        options.inPurgeable = true;
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId, options);
+        Bitmap bitmap = AppUtility.getInstance().decodeBitmapFromResource(getResources(), resourceId, 1);
         if (Build.VERSION.SDK_INT >= 16) {
             view.setBackground(new BitmapDrawable(getResources(), bitmap));
+
         } else {
             view.setBackgroundDrawable(new BitmapDrawable(getResources(), bitmap));
         }
