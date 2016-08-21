@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="8dp"
+    android:background="@null"
+    tools:context="com.app.checkmoney.Activity.CreateRoomActivity">
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_create_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/bg_general_button"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="확인"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_above="@id/button_create_room"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:id="@+id/input_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:view_title="방 제목"
+            app:input_hint="제목 입력 (15자 이내)"></com.app.checkmoney.CustomUi.CustomInputLayout>
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:layout_marginTop="13dp"
+            android:id="@+id/input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:input_type="number"
+            app:view_title="액수"
+            app:input_hint="액수 입력"></com.app.checkmoney.CustomUi.CustomInputLayout>
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:layout_marginTop="13dp"
+            android:id="@+id/input_expire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:view_title="기한"
+            app:input_hint="기한 선택"
+            app:blockTouch="true"></com.app.checkmoney.CustomUi.CustomInputLayout>
+    </LinearLayout>
+</RelativeLayout>

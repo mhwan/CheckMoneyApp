@@ -11,11 +11,17 @@ import android.telephony.TelephonyManager;
 import android.view.Display;
 import android.view.WindowManager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by Mhwan on 2016. 8. 19..
  */
 public class AppUtility {
     private static AppUtility instance;
+    private ArrayList<Activity> activityList;
 
     private AppUtility(){
     }
@@ -27,9 +33,20 @@ public class AppUtility {
         return instance;
     }
 
-    public void finishApplication(Activity activity) {
-        activity.moveTaskToBack(true);
-        activity.finish();
+    public void addActivity(Activity activity){
+        if (activityList == null)
+            activityList = new ArrayList<>();
+        activityList.add(activity);
+    }
+
+    public void finishApplication() {
+        if (activityList == null)
+            return;
+
+        for (Activity activity : activityList){
+            if (activity!=null)
+                activity.finish();
+        }
     }
 
 
@@ -112,5 +129,20 @@ public class AppUtility {
         } else {
             return display.getWidth();  // deprecated
         }
+    }
+
+    public String changeDateTimeFormat(String time, String original_format, String new_format){
+        SimpleDateFormat fOriginal = new SimpleDateFormat(original_format);
+        SimpleDateFormat fNew = new SimpleDateFormat(new_format);
+        String newtime;
+        try {
+            Date d = fOriginal.parse(time);
+            newtime = fNew.format(d);
+        } catch (ParseException e){
+            e.printStackTrace();
+            newtime = time;
+        }
+
+        return newtime;
     }
 }

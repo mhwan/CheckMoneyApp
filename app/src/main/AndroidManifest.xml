@@ -3,11 +3,11 @@
     package="com.moneycheck.checkmoneyapp">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:allowBackup="true"
         android:name="com.app.checkmoney.Util.AppContext"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -26,9 +26,11 @@
         <activity
             android:name="com.app.checkmoney.Activity.LoginActivity"
             android:theme="@style/MainTheme" />
-
-        <activity android:name="com.app.checkmoney.Activity.RegisterActivity"
-            android:theme="@style/RegisterTheme"></activity>
+        <activity
+            android:name="com.app.checkmoney.Activity.RegisterActivity"
+            android:theme="@style/RegisterTheme" />
+        <activity android:name="com.app.checkmoney.Activity.MainActivity" />
+        <activity android:name="com.app.checkmoney.Activity.CreateRoomActivity"></activity>
     </application>
 
 </manifest>

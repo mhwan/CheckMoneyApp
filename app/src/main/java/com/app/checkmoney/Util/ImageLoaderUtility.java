@@ -7,6 +7,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.utils.DiskCacheUtils;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 /**
  * Created by Mhwan on 2016. 8. 20..
@@ -60,5 +62,10 @@ public class ImageLoaderUtility {
                 .showImageForEmptyUri(R.drawable.image_default_profile)
                 .showImageOnFail(R.drawable.image_default_profile)
                 .build();
+    }
+
+    public void removeFromCache(String imageUri){
+        DiskCacheUtils.removeFromCache(imageUri, ImageLoader.getInstance().getDiskCache());
+        MemoryCacheUtils.removeFromCache(imageUri, ImageLoader.getInstance().getMemoryCache());
     }
 }

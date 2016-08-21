@@ -28,17 +28,16 @@ public class RegisterActivity extends BaseActivity {
     private EditText input_name, input_phnum;
     private CircleImageView image_profile;
     private static final int REQUEST_PICK_IMAGE = 0x13;
-    public static final String KEY_PHONE_NUMBER = "key_phnum";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setFromBaseView(R.layout.activity_register);
-        setToolbar(R.layout.layout_register_toolbar, R.id.toolbar_close);
-        initView(getIntent().getStringExtra(KEY_PHONE_NUMBER));
+        setToolbar(R.layout.layout_register_toolbar, R.id.toolbar_close, ToolbarType.SUB_TYPE);
+        initView();
     }
 
-    private void initView(String phnum) {
+    private void initView() {
         root_view = findViewById(R.id.root_register);
         root_view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -71,8 +70,25 @@ public class RegisterActivity extends BaseActivity {
                 }
             }
         });
+
+        button_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkValidate()) {
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    //백그라운드에 존재하는 모든 액티비티를 지움
+                    AppUtility.getInstance().finishApplication();
+                }
+
+            }
+        });
     }
 
+    //유효성 검사 (임시
+    private boolean checkValidate(){
+        return true;
+    }
     private void setPhoneNumber() {
         input_phnum.setText(AppUtility.getInstance().getMyPhoneNumber());
     }

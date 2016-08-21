@@ -23,8 +23,8 @@ public class DoublePressedKill {
             Toast.makeText(activity, "\'뒤로가기\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
             return;
         }
-        //2초이상 안지났으면 액티비티 종료
+        //2초이상 안지났으면 앱 종료
         else
-            AppUtility.getInstance().finishApplication(activity);
+            AppUtility.getInstance().finishApplication();
     }
 }

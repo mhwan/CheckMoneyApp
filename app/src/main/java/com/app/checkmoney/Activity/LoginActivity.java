@@ -8,14 +8,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.app.checkmoney.CustomBase.DoublePressedKill;
 import com.app.checkmoney.CustomUi.FadeInLinearlayout;
+import com.app.checkmoney.Util.AppUtility;
 import com.moneycheck.checkmoneyapp.R;
 
 public class LoginActivity extends AppCompatActivity {
+    private DoublePressedKill doublePressed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AppUtility.getInstance().addActivity(this);
+        doublePressed = new DoublePressedKill(LoginActivity.this);
         initView();
     }
 
@@ -38,5 +44,13 @@ public class LoginActivity extends AppCompatActivity {
         FadeInLinearlayout button_layout = (FadeInLinearlayout) findViewById(R.id.button_layout);
         imageView.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_logo));
         button_layout.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doublePressed != null)
+            doublePressed.onBackPressed();
+        else
+            super.onBackPressed();
     }
 }
