@@ -1,5 +1,6 @@
 package com.app.checkmoney.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -86,5 +87,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected String getToolbarTitle() {
         return "";
+    }
+
+    @Override
+    protected boolean getResult() {
+        return false;
+    }
+
+    @Override
+    protected Activity getActivity() {
+        return MainActivity.this;
     }
 }

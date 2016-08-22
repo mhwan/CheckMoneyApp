@@ -1,5 +1,6 @@
 package com.app.checkmoney.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -105,7 +106,7 @@ public class RegisterActivity extends BaseActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openPhotoPicker();
                 } else {
-                    Toast.makeText(getApplicationContext(), "권한이 거부되어 사진을 선택할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.text_deny_select_photo), Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -139,6 +140,16 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected String getToolbarTitle() {
-        return "회원가입";
+        return getString(R.string.title_register);
+    }
+
+    @Override
+    protected boolean getResult() {
+        return false;
+    }
+
+    @Override
+    protected Activity getActivity() {
+        return RegisterActivity.this;
     }
 }

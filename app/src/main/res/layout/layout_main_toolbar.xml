@@ -33,7 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@null"
-            android:padding="16dp"
+            android:padding="@dimen/toolbar_padding"
             android:src="@mipmap/ic_setting" />
 
     </RelativeLayout>

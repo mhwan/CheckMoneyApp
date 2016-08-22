@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.app.checkmoney.CustomUi.CustomInputPreference
+        android:key="key_preference_name"
+        android:title="이름"
+        android:summary="배명환"></com.app.checkmoney.CustomUi.CustomInputPreference>
+    <com.app.checkmoney.CustomUi.CustomInputPreference
+        android:key="key_preference_number"
+        android:title="휴대폰 번호"
+        android:summary="01050574876"></com.app.checkmoney.CustomUi.CustomInputPreference>
+
+
+    <com.app.checkmoney.CustomUi.CustomPreferenceCategory
+        android:title="알림 설정">
+        <com.app.checkmoney.CustomUi.CustomCheckboxPreference
+            android:key="key_preference_check"
+            android:title="알림"
+            android:defaultValue="true">
+
+        </com.app.checkmoney.CustomUi.CustomCheckboxPreference>
+    </com.app.checkmoney.CustomUi.CustomPreferenceCategory>
+
+    <com.app.checkmoney.CustomUi.CustomPreferenceCategory
+        android:title="앱 정보">
+        <com.app.checkmoney.CustomUi.CustomInputPreference
+            android:key="key_preference_app_version"
+            android:title="설치된 앱 버전"
+            android:summary="1.0.0"></com.app.checkmoney.CustomUi.CustomInputPreference>
+        <com.app.checkmoney.CustomUi.CustomPreference
+            android:key="key_preference_app_info"
+            android:title="앱 개발 정보"></com.app.checkmoney.CustomUi.CustomPreference>
+    </com.app.checkmoney.CustomUi.CustomPreferenceCategory>
+
+    <com.app.checkmoney.CustomUi.CustomPreferenceCategory
+        android:title="계정 관리">
+        <com.app.checkmoney.CustomUi.CustomPreference
+            android:key="key_preference_logout"
+            android:title="로그아웃">
+        </com.app.checkmoney.CustomUi.CustomPreference>
+        <com.app.checkmoney.CustomUi.CustomPreference
+            android:key="key_preference_remove_account"
+            android:title="회원탈퇴"></com.app.checkmoney.CustomUi.CustomPreference>
+    </com.app.checkmoney.CustomUi.CustomPreferenceCategory>
+</PreferenceScreen>

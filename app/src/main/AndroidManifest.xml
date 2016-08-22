@@ -29,8 +29,13 @@
         <activity
             android:name="com.app.checkmoney.Activity.RegisterActivity"
             android:theme="@style/RegisterTheme" />
-        <activity android:name="com.app.checkmoney.Activity.MainActivity" />
-        <activity android:name="com.app.checkmoney.Activity.CreateRoomActivity"></activity>
+        <activity
+            android:name="com.app.checkmoney.Activity.MainActivity"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name="com.app.checkmoney.Activity.CreateRoomActivity"
+            android:theme="@style/MainTheme" />
+        <activity android:name="com.app.checkmoney.Activity.UserSettingActivity"></activity>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ import com.moneycheck.checkmoneyapp.R;
  * Created by Mhwan on 2016. 8. 19..
  */
 public class CustomAlertDialog extends Dialog {
-    private String title, message, negative_text = "취소", positive_text = "확인";
+    private String title, message, negative_text = "취소", positive_text = getContext().getString(R.string.okay);
     private View.OnClickListener negative_listener = null, positive_listener = null;
 
     public CustomAlertDialog(Context context) {

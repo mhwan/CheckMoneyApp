@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/logo_kakao"
                 android:gravity="center"
-                android:text="카카오톡으로 로그인"
+                android:text="@string/login_to_kakao"
                 android:textColor="#3c1e1e"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="일반 회원가입"
+                android:text="@string/login_register"
                 android:textColor="#474747"
                 android:textSize="18sp"
                 android:textStyle="bold" />

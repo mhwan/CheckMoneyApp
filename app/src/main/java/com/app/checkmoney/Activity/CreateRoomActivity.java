@@ -1,5 +1,6 @@
 package com.app.checkmoney.Activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -13,7 +14,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class CreateRoomActivity extends BaseActivity {
     private CustomInputLayout title_layout, money_layout, date_layout;
@@ -36,6 +36,12 @@ public class CreateRoomActivity extends BaseActivity {
                 openDatePicker();
             }
         });
+        findViewById(R.id.button_create_room).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void openDatePicker(){
@@ -55,17 +61,27 @@ public class CreateRoomActivity extends BaseActivity {
             }
         });
         datePickerDialog.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
-        datePickerDialog.setTitle("기한 선택");
+        datePickerDialog.setTitle(getString(R.string.text_select_date));
         datePickerDialog.vibrate(true);
         datePickerDialog.show(getFragmentManager(), "datepicker");
     }
 
     private void setTimeText(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일 까지", Locale.US);
+        SimpleDateFormat format = new SimpleDateFormat(getString(R.string.text_format_expire_date));
         date_layout.setInputText(format.format(date));
     }
     @Override
     protected String getToolbarTitle() {
-        return "방 만들기";
+        return getString(R.string.title_create_room);
+    }
+
+    @Override
+    protected boolean getResult() {
+        return false;
+    }
+
+    @Override
+    protected Activity getActivity() {
+        return CreateRoomActivity.this;
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CustomBasePreference">
+
+    <TextView
+        android:id="@+android:id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="설정내역"
+        android:textSize="15sp"
+        android:textColor="@color/colorAccentBlack"/>
+
+    <TextView
+        android:id="@+android:id/summary"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorAccentLightGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

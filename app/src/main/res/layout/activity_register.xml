@@ -67,7 +67,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:ems="10"
-                android:hint="이름"
+                android:hint="@string/hint_name"
                 android:textColor="@color/colorAccentBlack"
                 android:textColorHint="@color/colorAccentLight"
                 android:textSize="15sp"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:hint="휴대폰 번호"
+                android:hint="@string/hint_phone_number"
                 android:inputType="phone"
                 android:textColor="@color/colorAccentBlack"
                 android:textColorHint="@color/colorAccentLight"
@@ -147,16 +147,6 @@
 
     <TextView
         android:id="@+id/button_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginRight="34dp"
-        android:background="@drawable/bg_general_button"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="회원가입"
-        android:textColor="@color/colorWhite"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        style="@style/Custom.ButtonStyle"
+        android:text="@string/title_register" />
 </LinearLayout>

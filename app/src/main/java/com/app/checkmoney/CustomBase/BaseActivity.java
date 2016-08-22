@@ -1,5 +1,7 @@
 package com.app.checkmoney.CustomBase;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.checkmoney.Activity.UserSettingActivity;
 import com.app.checkmoney.Util.AppUtility;
 import com.app.checkmoney.Util.DevelopeLog;
 import com.moneycheck.checkmoneyapp.R;
@@ -43,6 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             toolberview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (getResult())
+                        setResult(RESULT_OK);
                     finish();
                 }
             });
@@ -51,6 +56,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //설정 열기
+                    Intent intent = new Intent(getActivity(), UserSettingActivity.class);
+                    startActivity(intent);
                 }
             });
         }
@@ -73,4 +80,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public enum ToolbarType{ MAIN_TYPE, SUB_TYPE }
     protected abstract String getToolbarTitle();
+    protected abstract boolean getResult();
+    protected abstract Activity getActivity();
 }

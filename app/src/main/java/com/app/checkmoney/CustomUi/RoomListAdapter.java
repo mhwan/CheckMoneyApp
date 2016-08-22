@@ -50,7 +50,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
                 holder.room_state.setImageResource(R.mipmap.image_incomplete);
         }
         holder.room_title.setText(item.getRoom_name());
-        holder.room_money.setText(item.getPrice_money()+"원");
+        holder.room_money.setText(item.getPrice_money()+context.getString(R.string.text_won));
         holder.room_expireDate.setText(item.getExpire_date());
 
     }
