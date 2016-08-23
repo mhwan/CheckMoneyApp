@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.app.checkmoney.CustomUi.CustomInputPreference
         android:key="key_preference_name"
@@ -26,6 +27,7 @@
         <com.app.checkmoney.CustomUi.CustomInputPreference
             android:key="key_preference_app_version"
             android:title="설치된 앱 버전"
+            android:layout="@layout/layout_input_preference"
             android:summary="1.0.0"></com.app.checkmoney.CustomUi.CustomInputPreference>
         <com.app.checkmoney.CustomUi.CustomPreference
             android:key="key_preference_app_info"

@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.Selection;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
@@ -75,7 +76,7 @@ public class RegisterActivity extends BaseActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkValidate()) {
+                if (checkValidate() && button_register.isEnabled()) {
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                     //백그라운드에 존재하는 모든 액티비티를 지움
@@ -84,6 +85,7 @@ public class RegisterActivity extends BaseActivity {
 
             }
         });
+
     }
 
     //유효성 검사 (임시
@@ -91,7 +93,9 @@ public class RegisterActivity extends BaseActivity {
         return true;
     }
     private void setPhoneNumber() {
-        input_phnum.setText(AppUtility.getInstance().getMyPhoneNumber());
+        String number = AppUtility.getInstance().getMyPhoneNumber();
+        input_phnum.setText(number);
+        Selection.setSelection(input_phnum.getText(), number.length());
     }
 
     @Override

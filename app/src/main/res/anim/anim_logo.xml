@@ -2,8 +2,8 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillAfter="true"
     android:startOffset="80"
-    android:duration="580"
-    android:interpolator="@android:anim/accelerate_interpolator">
+    android:duration="590"
+    android:interpolator="@android:anim/linear_interpolator">
     <translate
         android:fromYDelta="-5%"
         android:toYDelta="-78%"/>

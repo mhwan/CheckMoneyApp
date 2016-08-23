@@ -5,23 +5,40 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.InputType;
+import android.text.Selection;
+import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.app.checkmoney.Util.DevelopeLog;
 import com.moneycheck.checkmoneyapp.R;
 
 /**
  * Created by Mhwan on 2016. 8. 19..
  */
 public class CustomAlertDialog extends Dialog {
-    private String title, message, negative_text = "취소", positive_text = getContext().getString(R.string.okay);
+    private String title, message, hint, negative_text = "취소", positive_text = getContext().getString(R.string.okay);
     private View.OnClickListener negative_listener = null, positive_listener = null;
+    private inflateType type;
+    private int layoutId;
+    private Context context;
+    private View rootview;
+    private EditText editText;
+    private int inputType = InputType.TYPE_CLASS_TEXT;
 
     public CustomAlertDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        this.context = context;
     }
 
     @Override
@@ -30,12 +47,17 @@ public class CustomAlertDialog extends Dialog {
         setContentView(R.layout.ui_alert_dialog);
 
         TextView titleview = (TextView) findViewById(R.id.title_text);
-        TextView messageview = (TextView) findViewById(R.id.message_text);
         TextView positivebutton = (TextView) findViewById(R.id.positive_button);
         TextView negativebutton = (TextView) findViewById(R.id.negative_button);
+        if (title.equals("") || title.isEmpty())
+            titleview.setVisibility(View.GONE);
+        else {
+            titleview.setVisibility(View.VISIBLE);
+            titleview.setText(title);
+        }
 
-        titleview.setText(title);
-        messageview.setText(message);
+        rootview = findViewById(R.id.message_frame);
+        inflateView((ViewGroup) rootview);
 
         //두개의 버튼을 모두 활성화 시킴
         if (positive_listener != null && negative_listener != null){
@@ -66,8 +88,24 @@ public class CustomAlertDialog extends Dialog {
     }
 
     public void setMessage(String message) {
+        type = inflateType.GENERAL_TEXT;
         this.message = message;
     }
+
+    public void setEditMessage(String hint, String message){
+        type = inflateType.EDIT_TEXT;
+        this.message = message;
+        this.hint = hint;
+    }
+
+    public void setInputType(int inputType){
+        this.inputType = inputType;
+    }
+    public void setLayout(int layoutId){
+        type = inflateType.LAYOUT;
+        this.layoutId = layoutId;
+    }
+
     public void setNegativeButton(String negative_text, final View.OnClickListener listener){
         this.negative_text = negative_text;
         this.negative_listener = listener;
@@ -76,4 +114,62 @@ public class CustomAlertDialog extends Dialog {
         this.positive_text = positive_text;
         this.positive_listener = listener;
     }
+
+    public String getEdittextMessage(){
+        return editText.getText().toString();
+        //return getEdittextMessage(rootview);
+    }
+
+    public String getEdittextMessage(View view) {
+        String message = "";
+        DevelopeLog.d(view.getClass().getName().toString());
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i=0; i<viewGroup.getChildCount(); i++){
+                getEdittextMessage(viewGroup.getChildAt(i));
+            }
+        } else if (view instanceof EditText) {
+            DevelopeLog.d("edittext!");
+            EditText editText = (EditText) view;
+            return editText.getText().toString();
+        }
+
+        return message;
+    }
+    private void inflateView(ViewGroup rootView){
+        if (type.equals(inflateType.LAYOUT)) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(layoutId, rootView, false);
+        } else {
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
+                    (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
+            if (type.equals(inflateType.GENERAL_TEXT)) {
+                TextView textView = new TextView(context);
+                textView.setText(message);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                textView.setTextColor(ContextCompat.getColor(context, R.color.colorAccentBlack));
+                textView.setLayoutParams(params);
+
+                rootView.addView(textView);
+            } else if (type.equals(inflateType.EDIT_TEXT)) {
+                ContextThemeWrapper newContext = new ContextThemeWrapper(context, R.style.EditTextTheme);
+                editText = new EditText(newContext);
+                editText.setText(message);
+                Selection.setSelection(editText.getText(), message.length());
+                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                editText.setTextColor(ContextCompat.getColor(context, R.color.colorAccentBlack));
+                editText.setHint(hint);
+                editText.setInputType(inputType);
+                editText.setHintTextColor(ContextCompat.getColor(context, R.color.colorAccentLight));
+                editText.setLayoutParams(params);
+
+                rootView.addView(editText);
+            }
+
+        }
+    }
+
+    private enum inflateType { GENERAL_TEXT, EDIT_TEXT, LAYOUT }
 }

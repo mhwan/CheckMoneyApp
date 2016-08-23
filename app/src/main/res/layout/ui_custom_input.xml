@@ -16,7 +16,7 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_custom_dialog"
+        android:background="@drawable/bg_general_box"
         android:theme="@style/EditTextTheme"
         android:hint="터치터치"
         android:textSize="15sp"
