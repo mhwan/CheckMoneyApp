@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.checkmoney.Activity.RoomActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/room_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.app.checkmoney.CustomUi.CustomBottomButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_behavior="com.app.checkmoney.CustomUi.ShowHideBehavior"
+        app:button_color="@color/colorPrimary"
+        app:button_icon="@mipmap/image_messgage_send"
+        app:button_text="메시지 보내기"></com.app.checkmoney.CustomUi.CustomBottomButton>
+</android.support.design.widget.CoordinatorLayout>

@@ -36,7 +36,8 @@ public class MainActivity extends BaseActivity {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                Intent intent = new Intent(MainActivity.this, RoomActivity.class);
+                startActivity(intent);
             }
 
             @Override

@@ -26,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        AppUtility.getInstance().addActivity(this);
+        AppUtility.getInstance().addActivity(getActivity());
         root_layout = (LinearLayout) findViewById(R.id.rootview);
         toolbar = (Toolbar) findViewById(R.id.base_toolbar);
         DevelopeLog.d("base oncreate");
@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (getResult())
                         setResult(RESULT_OK);
-                    finish();
+                    finishActivity();
                 }
             });
         } else if (type.equals(ToolbarType.MAIN_TYPE)) {
@@ -67,6 +67,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishActivity();
+    }
+
+    protected void finishActivity(){
+        AppUtility.getInstance().finishActivity();
+        finish();
+    }
     protected void setToolbar(int toolbarId, int navigationIconId, ToolbarType type) {
         this.toolbarId = toolbarId;
         this.navigationIcon = navigationIconId;

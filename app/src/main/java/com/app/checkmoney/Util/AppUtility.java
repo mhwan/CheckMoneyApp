@@ -37,6 +37,18 @@ public class AppUtility {
         if (activityList == null)
             activityList = new ArrayList<>();
         activityList.add(activity);
+        DevelopeLog.d("ADD ACTIVITY");
+        DevelopeLog.d(activityList.toString());
+    }
+
+    public void finishActivity(){
+        if (activityList == null)
+            return;
+        int lastindex = activityList.size()-1;
+        if (lastindex >= 0)
+            activityList.remove(lastindex);
+        DevelopeLog.d("FINISH ACTIVITY");
+        DevelopeLog.d(activityList.toString());
     }
 
     public void finishApplication() {
