@@ -11,6 +11,7 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/button_create_room"
         style="@style/Custom.ButtonStyle"
+        android:clickable="true"
         android:text="@string/okay"/>
 
     <LinearLayout
@@ -26,6 +27,7 @@
             android:id="@+id/input_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:view_title="@string/title_room_title"
             app:input_hint="@string/hint_room_title"></com.app.checkmoney.CustomUi.CustomInputLayout>
         <com.app.checkmoney.CustomUi.CustomInputLayout
@@ -33,6 +35,7 @@
             android:id="@+id/input_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:input_type="number"
             app:view_title="@string/title_money"
             app:input_hint="@string/hint_money"></com.app.checkmoney.CustomUi.CustomInputLayout>
@@ -41,6 +44,7 @@
             android:id="@+id/input_expire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:effectTouch="true"
             app:view_title="@string/title_date"
             app:input_hint="@string/text_select_date"
             app:blockTouch="true"></com.app.checkmoney.CustomUi.CustomInputLayout>

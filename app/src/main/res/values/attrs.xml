@@ -21,6 +21,7 @@
         <attr name="input_hint" format="string" />
         <attr name="input_text" format="string" />
         <attr name="blockTouch" format="boolean" />
+        <attr name="effectTouch" format="boolean" />
         <attr name="input_type" format="enum">
             <enum name="string" value="0" />
             <enum name="number" value="1" />

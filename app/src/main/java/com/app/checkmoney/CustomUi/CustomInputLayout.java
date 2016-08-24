@@ -51,7 +51,6 @@ public class CustomInputLayout extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.ui_custom_input, this, false);
         addView(view);
-
         title_textview = (TextView) findViewById(R.id.title_view);
         input_text = (EditText) findViewById(R.id.input_view);
     }
@@ -63,7 +62,9 @@ public class CustomInputLayout extends LinearLayout {
         String input_text = attrArray.getString(R.styleable.CustomInputLayout_input_text);
         int type = attrArray.getInt(R.styleable.CustomInputLayout_input_type, 0);
         boolean isblock = attrArray.getBoolean(R.styleable.CustomInputLayout_blockTouch, false);
+        boolean iseffect = attrArray.getBoolean(R.styleable.CustomInputLayout_effectTouch, false);
 
+        setTouchEffect(iseffect);
         setTitleText(title);
         setInputHint(hint);
         setInputText(input_text);
@@ -86,6 +87,14 @@ public class CustomInputLayout extends LinearLayout {
         input_text.setHint(hint);
     }
 
+    public void setTouchEffect(boolean isEffect) {
+        if (isEffect) {
+            input_text.setEnabled(true);
+            input_text.setBackgroundResource(R.drawable.bg_general_effect_box);
+        } else {
+            input_text.setBackgroundResource(R.drawable.bg_general_box);
+        }
+    }
     public void setInputText(String text) {
         input_text.setText(text);
     }
