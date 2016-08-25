@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="7dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_custom_dialog"
+    tools:context="com.app.checkmoney.CustomUi.RoomUserListFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/button_manage_user"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="사용자 관리하기"
+        android:textSize="15sp"
+        android:textColor="@color/colorAccentGrey"/>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:background="#f7f8f8" />
+
+    <LinearLayout
+        android:id="@+id/userlist_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+</LinearLayout>

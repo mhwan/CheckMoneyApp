@@ -61,6 +61,20 @@ public class AppUtility {
         }
     }
 
+    public Date getDate(String sDate, String sFormat){
+        Date date = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(sFormat);
+        try {
+            date = simpleDateFormat.parse(sDate);
+
+            if (date == null)
+                throw new IllegalArgumentException("Date is null");
+        } catch (ParseException | IllegalArgumentException e){
+            e.printStackTrace();
+        }
+
+        return date;
+    }
 
     public String getMyPhoneNumber() {
         TelephonyManager tm = (TelephonyManager) AppContext.getContext().getSystemService(Context.TELEPHONY_SERVICE);
@@ -156,5 +170,10 @@ public class AppUtility {
         }
 
         return newtime;
+    }
+
+    public class BaseDataType {
+        public static final String DB_DATETIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
+        public static final String DB_DATE_FORMAT = "yyyy/MM/dd";
     }
 }

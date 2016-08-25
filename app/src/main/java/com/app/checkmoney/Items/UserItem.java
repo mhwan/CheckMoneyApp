@@ -8,6 +8,7 @@ public class UserItem {
     private ManageType mtype;
     private ExchangeType etype;
     private boolean ispay = false;
+    private boolean newNotify = false;
 
     public UserItem(String name, String phoneNumber, ManageType mtype, ExchangeType etype) {
         this.name = name;
@@ -62,6 +63,14 @@ public class UserItem {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isNewNotify() {
+        return newNotify;
+    }
+
+    public void setNewNotify(boolean newNotify) {
+        this.newNotify = newNotify;
     }
 
     /**

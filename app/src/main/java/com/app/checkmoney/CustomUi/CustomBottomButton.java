@@ -86,6 +86,9 @@ public class CustomBottomButton extends RelativeLayout {
             button_icon.setVisibility(GONE);
     }
 
+    public RelativeLayout getButtonBackground() {
+        return background;
+    }
     /*
     public void setButtonBackground(int colorid){
         background.setBackgroundColor(ContextCompat.getColor(context, colorid));

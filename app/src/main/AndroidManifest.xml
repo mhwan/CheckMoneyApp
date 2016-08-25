@@ -36,7 +36,8 @@
             android:name="com.app.checkmoney.Activity.CreateRoomActivity"
             android:theme="@style/MainTheme" />
         <activity android:name="com.app.checkmoney.Activity.UserSettingActivity" />
-        <activity android:name="com.app.checkmoney.Activity.RoomActivity"></activity>
+        <activity android:name="com.app.checkmoney.Activity.RoomActivity" />
+        <activity android:name="com.app.checkmoney.Activity.EditRoomActivity"></activity>
     </application>
 
 </manifest>

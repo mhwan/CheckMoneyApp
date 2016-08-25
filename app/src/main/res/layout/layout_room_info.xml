@@ -1,0 +1,222 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_custom_dialog"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    tools:context="com.app.checkmoney.CustomUi.RoomInfoFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp">
+
+        <TextView
+            android:id="@+id/button_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_yellow_box"
+            android:paddingBottom="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:clickable="true"
+            android:text="변경"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/bg_receiver"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/button_change">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_profile"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/image_default_profile" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@id/image_profile"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/receiver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배명환"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:scaleType="fitCenter"
+                    android:layout_toRightOf="@id/receiver_name"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginBottom="4dp"
+                    android:src="@mipmap/image_receiver_badge"/>
+                <TextView
+                    android:layout_below="@id/receiver_name"
+                    android:id="@+id/receiver_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="01050574876"
+                    android:textColor="@color/colorAccentLight"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:background="#f7f8f8" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="7dp">
+
+        <TextView
+            android:id="@+id/room_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자바를 자바라"
+            android:textColor="@color/colorAccentBlack"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/button_room_setting"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="2dp"
+            android:layout_alignParentRight="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_room_setting"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/shape_green"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_green" />
+
+                <TextView
+                    android:id="@+id/title_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toRightOf="@id/shape_green"
+                    android:text="기한"
+                    android:textColor="@color/colorAccentLight"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/title_date"
+                    android:text="2016/08/20까지"
+                    android:textColor="@color/colorAccentGrey"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/shape_blue"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_blue" />
+
+                <TextView
+                    android:id="@+id/title_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toRightOf="@id/shape_blue"
+                    android:text="금액"
+                    android:textColor="@color/colorAccentLight"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/text_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/title_money"
+                    android:text="5000원"
+                    android:textColor="@color/colorAccentGrey"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/button_messgage_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_button_light"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:paddingBottom="6dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:paddingTop="6dp"
+        android:text="메시지 알림 설정"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp" />
+</LinearLayout>

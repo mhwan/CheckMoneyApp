@@ -21,7 +21,7 @@ public class ShowHideBehavior extends CoordinatorLayout.Behavior<View> {
     private boolean mIsHiding;
     private static final Interpolator INTERPOLATOR = new FastOutLinearInInterpolator();
     private final int ANIMATION_TIME = 260;
-    private final int distance = 10;
+    private final int distance = 4;
 
     public ShowHideBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);

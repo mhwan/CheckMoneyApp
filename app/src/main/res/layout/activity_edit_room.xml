@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.app.checkmoney.Activity.EditRoomActivity">
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_create_room"
+        style="@style/Custom.ButtonStyle"
+        android:clickable="true"
+        android:text="@string/okay"/>
+
+    <TextView
+        android:id="@+id/button_manage_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_above="@id/button_create_room"
+        android:padding="6dp"
+        android:layout_margin="18dp"
+        android:gravity="center"
+        android:text="사용자 관리로"
+        android:textSize="15sp"
+        android:textColor="@color/colorAccentLight"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_above="@id/button_manage_user"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:id="@+id/input_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:view_title="@string/title_room_title"
+            app:input_hint="@string/hint_room_title"></com.app.checkmoney.CustomUi.CustomInputLayout>
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:layout_marginTop="13dp"
+            android:id="@+id/input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:input_type="number"
+            app:view_title="@string/title_money"
+            app:input_hint="@string/hint_money"></com.app.checkmoney.CustomUi.CustomInputLayout>
+        <com.app.checkmoney.CustomUi.CustomInputLayout
+            android:layout_marginTop="13dp"
+            android:id="@+id/input_expire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:effectTouch="true"
+            app:view_title="@string/title_date"
+            app:input_hint="@string/text_select_date"
+            app:blockTouch="true"></com.app.checkmoney.CustomUi.CustomInputLayout>
+    </LinearLayout>
+</RelativeLayout>
