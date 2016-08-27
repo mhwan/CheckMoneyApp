@@ -32,5 +32,7 @@
         <attr name="button_text" format="string" />
         <attr name="button_icon" format="reference" />
         <attr name="button_color" format="color" />
+        <attr name="ripple_visible" format="boolean" />
+        <attr name="button_ripple" format="reference" />
     </declare-styleable>
 </resources>

@@ -96,6 +96,24 @@ public class RoomInfoFragment extends Fragment implements View.OnClickListener{
                 startActivityForResult(intent, 0x445);
                 break;
             case R.id.bg_receiver :
+                final CustomProfileDialog dialog = new CustomProfileDialog(parent_activity);
+                dialog.setName(receiverInfo.getName());
+                dialog.setPhonenumber(receiverInfo.getPhoneNumber());
+                dialog.setExchangeType(receiverInfo.getEtype());
+                dialog.setButtonlistener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //전화 걸기
+                        dialog.dismiss();
+                    }
+                }, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //메시지 전송
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
                 break;
         }
 

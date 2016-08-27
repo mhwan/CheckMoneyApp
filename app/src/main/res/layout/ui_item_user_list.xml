@@ -8,12 +8,12 @@
     <RelativeLayout
         android:id="@+id/bg_user_list"
         android:layout_width="match_parent"
-        android:paddingRight="12dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/button_layout"
             android:layout_alignParentRight="true"
+            android:paddingRight="12dp"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_centerVertical="true"

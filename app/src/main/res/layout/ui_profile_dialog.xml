@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/bg_custom_dialog"
+        android:paddingBottom="14dp"
+        android:paddingTop="52dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialog_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="배명환"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/colorAccentGrey"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/dialog_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="01050574876"
+                android:textColor="@color/colorAccentLight"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="36dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="@color/colorAccentLightGreen" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <ImageButton
+                    android:id="@+id/button_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@mipmap/button_call" />
+
+                <ImageButton
+                    android:id="@+id/button_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_toRightOf="@id/button_call"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@mipmap/button_message" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="5dp"
+            android:id="@+id/image_profile"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/image_default_profile" />
+
+        <ImageView
+            android:id="@+id/image_sign"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/image_sign_receiver"
+            android:layout_marginBottom="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_gravity="bottom|right"/>
+
+    </FrameLayout>
+</FrameLayout>

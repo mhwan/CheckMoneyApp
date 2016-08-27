@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorPrimaryDark"
-    android:id="@+id/button_root"
-    android:clickable="true"
-    android:foreground="?attr/selectableItemBackground"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:id="@+id/button_ripple"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal"
-        android:padding="13dp"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/button_root"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/button_image"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="12dp"
-            android:src="@mipmap/image_messgage_send"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/button_text"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:text="메시지 보내기"
-            android:textSize="17sp"/>
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:padding="13dp"
+            android:layout_height="wrap_content">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/button_image"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/image_messgage_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/button_text"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:text="메시지 보내기"
+                android:textSize="17sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
