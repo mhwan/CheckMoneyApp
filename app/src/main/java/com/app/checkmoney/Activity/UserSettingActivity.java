@@ -10,10 +10,13 @@ import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.app.checkmoney.CustomBase.BaseActivity;
 import com.app.checkmoney.CustomUi.CustomAlertDialog;
 import com.app.checkmoney.CustomUi.CustomInputPreference;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.moneycheck.checkmoneyapp.R;
 
 public class UserSettingActivity extends BaseActivity {
@@ -35,7 +38,7 @@ public class UserSettingActivity extends BaseActivity {
 
     @Override
     protected String getToolbarTitle() {
-        return "설정";
+        return getString(R.string.text_setting);
     }
 
     @Override
@@ -96,15 +99,15 @@ public class UserSettingActivity extends BaseActivity {
                 final SharedPreferences preferences = getPreferenceManager().getSharedPreferences();
                 String name = preferences.getString(KEY_PREFERENCE_NAME, "");
                 final CustomAlertDialog dialog = new CustomAlertDialog(getActivity());
-                dialog.setTitle("이름 설정");
+                dialog.setTitle(getString(R.string.text_name_setting));
                 dialog.setEditMessage(getString(R.string.hint_name), name);
-                dialog.setNegativeButton("취소", new View.OnClickListener() {
+                dialog.setNegativeButton(getString(R.string.text_cancel), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
                 });
-                dialog.setPositiveButton("확인", new View.OnClickListener() {
+                dialog.setPositiveButton(getString(R.string.text_okay), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         setValue(preferences, pref_name, KEY_PREFERENCE_NAME, dialog.getEdittextMessage());
@@ -117,16 +120,16 @@ public class UserSettingActivity extends BaseActivity {
                 final SharedPreferences preferences = getPreferenceManager().getSharedPreferences();
                 String name = preferences.getString(KEY_PREFERENCE_PHONE, "");
                 final CustomAlertDialog dialog = new CustomAlertDialog(getActivity());
-                dialog.setTitle("번호 설정");
+                dialog.setTitle(getString(R.string.text_number_setting));
                 dialog.setEditMessage(getString(R.string.hint_phone_number), name);
                 dialog.setInputType(InputType.TYPE_CLASS_PHONE);
-                dialog.setNegativeButton("취소", new View.OnClickListener() {
+                dialog.setNegativeButton(getString(R.string.text_cancel), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
                 });
-                dialog.setPositiveButton("확인", new View.OnClickListener() {
+                dialog.setPositiveButton(getString(R.string.text_okay), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         setValue(preferences, pref_phone, KEY_PREFERENCE_PHONE, dialog.getEdittextMessage());
@@ -140,11 +143,26 @@ public class UserSettingActivity extends BaseActivity {
             } else if (key.equals(pref_appInfo.getKey())) {
                 return true;
             } else if (key.equals(pref_logout.getKey())) {
+                UserManagement.requestLogout(new LogoutResponseCallback() {
+                    @Override
+                    public void onCompleteLogout() {
+                        //로그아웃 성공
+                        resetUser();
+                        Toast.makeText(getActivity(), getString(R.string.text_logout_kakao_account), Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return true;
             } else if (key.equals(pref_leave_member.getKey())) {
                 return true;
             }
             return false;
+        }
+
+        private void resetUser(){
+            SharedPreferences preferences = getPreferenceManager().getSharedPreferences();
+            setValue(preferences, pref_phone, KEY_PREFERENCE_PHONE, "");
+            setValue(preferences, pref_name, KEY_PREFERENCE_NAME, "");
+
         }
 
         private void setValue(SharedPreferences sharedPreferences, Preference preference, String key, String value){

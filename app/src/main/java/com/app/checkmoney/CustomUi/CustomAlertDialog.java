@@ -25,7 +25,7 @@ import com.moneycheck.checkmoneyapp.R;
  * Created by Mhwan on 2016. 8. 19..
  */
 public class CustomAlertDialog extends Dialog {
-    private String title, message, hint, negative_text = "취소", positive_text = getContext().getString(R.string.okay);
+    private String title, message, hint, negative_text = getContext().getString(R.string.text_cancel), positive_text = getContext().getString(R.string.okay);
     private View.OnClickListener negative_listener = null, positive_listener = null;
     private inflateType type;
     private int layoutId;
@@ -67,12 +67,12 @@ public class CustomAlertDialog extends Dialog {
             negativebutton.setText(negative_text);
             positivebutton.setOnClickListener(positive_listener);
             negativebutton.setOnClickListener(negative_listener);
-        } else if (positive_listener != null) {
+        } else if (positive_listener != null && negative_listener == null) {
             negativebutton.setVisibility(View.GONE);
             positivebutton.setVisibility(View.VISIBLE);
             positivebutton.setText(positive_text);
             positivebutton.setOnClickListener(positive_listener);
-        } else if (negative_listener != null) {
+        } else if (negative_listener != null && positive_listener == null) {
             positivebutton.setVisibility(View.GONE);
             negativebutton.setVisibility(View.VISIBLE);
             negativebutton.setText(negative_text);

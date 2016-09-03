@@ -24,9 +24,6 @@ public class EditRoomActivity extends BaseActivity {
     private TextView button_manage_user;
     private String title;
     private int money;
-    public static final String NAME_ROOM = "key_name_room";
-    public static final String MONEY_ROOM = "key_money_room";
-    public static final String DATE_ROOM = "key_date_room";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +31,9 @@ public class EditRoomActivity extends BaseActivity {
         setToolbar(R.layout.layout_base_toolbar, R.id.toolbar_close, ToolbarType.SUB_TYPE);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
-            title = bundle.getString(NAME_ROOM);
-            money = bundle.getInt(MONEY_ROOM);
-            String sDate = bundle.getString(DATE_ROOM);
+            title = bundle.getString(AppUtility.BaseDataType.NAME_ROOM);
+            money = bundle.getInt(AppUtility.BaseDataType.MONEY_ROOM);
+            String sDate = bundle.getString(AppUtility.BaseDataType.DATE_ROOM);
             calendar = Calendar.getInstance();
             calendar.setTime(AppUtility.getInstance().getDate(sDate, AppUtility.BaseDataType.DB_DATE_FORMAT));
         }

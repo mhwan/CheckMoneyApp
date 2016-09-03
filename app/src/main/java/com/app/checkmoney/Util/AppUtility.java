@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.view.Display;
@@ -13,7 +14,6 @@ import android.view.WindowManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,7 +21,6 @@ import java.util.Date;
  */
 public class AppUtility {
     private static AppUtility instance;
-    private ArrayList<Activity> activityList;
 
     private AppUtility(){
     }
@@ -33,32 +32,9 @@ public class AppUtility {
         return instance;
     }
 
-    public void addActivity(Activity activity){
-        if (activityList == null)
-            activityList = new ArrayList<>();
-        activityList.add(activity);
-        DevelopeLog.d("ADD ACTIVITY");
-        DevelopeLog.d(activityList.toString());
-    }
-
-    public void finishActivity(){
-        if (activityList == null)
-            return;
-        int lastindex = activityList.size()-1;
-        if (lastindex >= 0)
-            activityList.remove(lastindex);
-        DevelopeLog.d("FINISH ACTIVITY");
-        DevelopeLog.d(activityList.toString());
-    }
-
-    public void finishApplication() {
-        if (activityList == null)
-            return;
-
-        for (Activity activity : activityList){
-            if (activity!=null)
-                activity.finish();
-        }
+    public void finishApplication(Activity activity) {
+        activity.moveTaskToBack(true);
+        activity.finish();
     }
 
     public Date getDate(String sDate, String sFormat){
@@ -74,6 +50,38 @@ public class AppUtility {
         }
 
         return date;
+    }
+
+    public boolean isNetworkConnection(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) AppContext.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return connectivityManager.getActiveNetworkInfo() != null
+                && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
+        /*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Network[] networks = connectivityManager.getAllNetworks();
+            NetworkInfo networkInfo;
+            if (networks != null) {
+                for (Network mNetwork : networks) {
+                    networkInfo = connectivityManager.getNetworkInfo(mNetwork);
+                    if (networkInfo.getState().equals(NetworkInfo.State.CONNECTED)) {
+                        return true;
+                    }
+                }
+            }
+        } else {
+            if (connectivityManager != null) {
+                NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
+                if (info != null) {
+                    for (NetworkInfo anInfo : info) {
+                        if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;*/
     }
 
     public String getMyPhoneNumber() {
@@ -175,5 +183,17 @@ public class AppUtility {
     public class BaseDataType {
         public static final String DB_DATETIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
         public static final String DB_DATE_FORMAT = "yyyy/MM/dd";
+
+        //카카오 로그인과 관련된 키값
+        public static final String KEY_KAKAO_NAME = "kakao_name";
+        public static final String KEY_KAKAO_ID = "kakao_id";
+        public static final String KEY_KAKAO_IMAGE_PATH = "kakao_image";
+
+
+        //인텐트와 관련된 키값
+        public static final String NAME_ROOM = "key_name_room";
+        public static final String MONEY_ROOM = "key_money_room";
+        public static final String DATE_ROOM = "key_date_room";
+
     }
 }

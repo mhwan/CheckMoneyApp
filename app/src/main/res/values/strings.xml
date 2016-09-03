@@ -8,7 +8,7 @@
     <string name="title_money">액수</string>
     <string name="hint_money">액수 입력</string>
     <string name="okay">확인</string>
-    <string name="login_register">일반 회원가입</string>
+    <string name="login_register">일반 로그인</string>
     <string name="login_to_kakao">카카오톡으로 로그인</string>
     <string name="title_register">회원가입</string>
     <string name="hint_phone_number">휴대폰 번호</string>
@@ -17,8 +17,22 @@
     <string name="text_finish_application">"'뒤로가기' 버튼을 한번 더 누르시면 종료됩니다."</string>
     <string name="text_won">원</string>
     <string name="text_format_expire_date">yyyy년 MM월 dd일 까지</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="text_error_title">오류</string>
+    <string name="text_fail_login_kakao_others">알 수 없는 오류로 인해 카카오계정으로 로그인에 실패하였습니다.</string>
+    <string name="text_fail_login_kakao_weak_server">서비스 연결 상태가 좋지 않습니다.\n다시 시도해주세요.</string>
+    <string name="text_succeed_login">로그인이 완료되었습니다.</string>
+    <string name="text_unconnected_internet">인터넷 연결상태를 확인해주세요.</string>
+    <string name="text_working_register">회원가입 처리중..</string>
+    <string name="text_succeed_register">회원가입이 완료되었습니다.</string>
+    <string name="text_failed_register">회원가입에 실패하였습니다.</string>
+    <string name="text_exist_account_register">이미 존재하는 계정입니다.</string>
+    <string name="text_pick_image">사진 선택</string>
+    <string name="text_setting">설정</string>
+    <string name="text_cancel">취소</string>
+    <string name="text_okay">확인</string>
+    <string name="text_name_setting">이름 설정</string>
+    <string name="text_number_setting">번호 설정</string>
+    <string name="text_user_management">사용자 관리하기</string>
+    <string name="text_logout_kakao_account">카카오 계정이 로그아웃 되었습니다.</string>
+    <string name="key_kakao_app">d8a17736374ca3dfd5dd005a0be56e84</string>
 </resources>

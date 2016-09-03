@@ -1,6 +1,7 @@
 package com.app.checkmoney.CustomBase;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.checkmoney.Activity.UserSettingActivity;
-import com.app.checkmoney.Util.AppUtility;
 import com.app.checkmoney.Util.DevelopeLog;
 import com.moneycheck.checkmoneyapp.R;
 
@@ -26,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        AppUtility.getInstance().addActivity(getActivity());
+        //AppUtility.getInstance().addActivity(getActivity());
         root_layout = (LinearLayout) findViewById(R.id.rootview);
         toolbar = (Toolbar) findViewById(R.id.base_toolbar);
         DevelopeLog.d("base oncreate");
@@ -74,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void finishActivity(){
-        AppUtility.getInstance().finishActivity();
+        //AppUtility.getInstance().finishActivity();
         finish();
     }
     protected void setToolbar(int toolbarId, int navigationIconId, ToolbarType type) {
@@ -92,4 +92,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract String getToolbarTitle();
     protected abstract boolean getResult();
     protected abstract Activity getActivity();
+
+    public Context getContext(){
+        return getActivity();
+    }
 }

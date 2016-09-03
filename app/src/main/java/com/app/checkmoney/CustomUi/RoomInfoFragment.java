@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.app.checkmoney.Activity.EditRoomActivity;
 import com.app.checkmoney.Activity.RoomActivity;
 import com.app.checkmoney.Items.UserItem;
+import com.app.checkmoney.Util.AppUtility;
 import com.moneycheck.checkmoneyapp.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -89,9 +90,9 @@ public class RoomInfoFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.button_room_setting :
                 Intent intent = new Intent(parent_activity, EditRoomActivity.class);
-                intent.putExtra(EditRoomActivity.NAME_ROOM, "자바를 자바");
-                intent.putExtra(EditRoomActivity.MONEY_ROOM, 6000);
-                intent.putExtra(EditRoomActivity.DATE_ROOM, "2016/09/21");
+                intent.putExtra(AppUtility.BaseDataType.NAME_ROOM, "자바를 자바");
+                intent.putExtra(AppUtility.BaseDataType.MONEY_ROOM, 6000);
+                intent.putExtra(AppUtility.BaseDataType.DATE_ROOM, "2016/09/21");
 
                 startActivityForResult(intent, 0x445);
                 break;

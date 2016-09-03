@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="11"
     android:background="@color/colorPrimarybg"
+    android:orientation="vertical"
+    android:weightSum="12"
     tools:context="com.app.checkmoney.Activity.RegisterActivity">
 
     <RelativeLayout
+        android:id="@+id/root_register"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/root_register"
         android:layout_weight="4">
 
         <FrameLayout
@@ -21,8 +21,8 @@
             android:layout_height="118dp"
             android:layout_centerHorizontal="true"
             android:clickable="true"
-            android:foreground="?android:selectableItemBackground"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="6dp"
+            android:foreground="?android:selectableItemBackground">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_profile"
@@ -41,114 +41,188 @@
         </FrameLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/input_register_info"
+
+    <RelativeLayout
+        android:layout_weight="8"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimarybg"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:paddingTop="14dp"
-        android:layout_weight="7"
-        android:orientation="vertical">
+        android:layout_height="0dp">
 
+        <TextView
+            android:id="@+id/button_register"
+            style="@style/Custom.ButtonStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="4dp"
+            android:text="@string/title_register" />
 
-        <android.support.design.widget.TextInputLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/TextLabel"
-            app:counterEnabled="true"
-            app:counterMaxLength="10"
-            app:counterOverflowTextAppearance="@style/counterOverride"
-            app:counterTextAppearance="@style/counterText">
+            android:layout_height="match_parent"
+            android:layout_above="@id/button_register">
 
-            <EditText
-                android:id="@+id/input_name"
+            <LinearLayout
+                android:id="@+id/input_register_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:ems="10"
-                android:hint="@string/hint_name"
-                android:textColor="@color/colorAccentBlack"
-                android:textColorHint="@color/colorAccentLight"
-                android:textSize="15sp"
-                android:theme="@style/EditTextTheme" />
+                android:layout_height="0dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@color/colorPrimarybg"
+                android:orientation="vertical">
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputlayout_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:theme="@style/TextLabel">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:theme="@style/TextLabel">
+                    <EditText
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="이메일"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/colorAccentBlack"
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:theme="@style/EditTextTheme" />
 
-            <EditText
-                android:id="@+id/input_phnum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:hint="@string/hint_phone_number"
-                android:inputType="phone"
-                android:textColor="@color/colorAccentBlack"
-                android:textColorHint="@color/colorAccentLight"
-                android:textSize="15sp"
-                android:theme="@style/EditTextTheme" />
+                </android.support.design.widget.TextInputLayout>
 
-        </android.support.design.widget.TextInputLayout>
-        <!--
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputlayout_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이름"
-                android:textColor="@color/colorPrimaryDarkFont"
-                android:textSize="14sp" />
+                    <EditText
+                        android:id="@+id/input_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="비밀번호"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@color/colorAccentBlack"
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:theme="@style/EditTextTheme" />
 
-            <EditText
-                android:theme="@style/EditTextTheme"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:textSize="15sp"
-                android:hint="이름을 입력하세요."
-                android:textColorHint="@color/colorAccentLight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputlayout_checkpw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="휴대폰 번호"
-                android:textColor="@color/colorPrimaryDarkFont"
-                android:textSize="14sp" />
+                    <EditText
+                        android:id="@+id/input_checkpw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="비밀번호 재입력"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@color/colorAccentBlack"
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:theme="@style/EditTextTheme" />
 
-            <EditText
-                android:theme="@style/EditTextTheme"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:hint="휴대폰 번호를 입력하세요."
-                android:textColorHint="@color/colorAccentLight"
-                android:textSize="15sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout> -->
+                </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-    <TextView
-        android:id="@+id/button_register"
-        style="@style/Custom.ButtonStyle"
-        android:text="@string/title_register" />
+                    <EditText
+                        android:id="@+id/input_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:ems="10"
+                        android:hint="@string/hint_name"
+                        android:textColor="@color/colorAccentBlack"
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:theme="@style/EditTextTheme" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/input_phnum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="@string/hint_phone_number"
+                        android:inputType="phone"
+                        android:textColor="@color/colorAccentBlack"
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:theme="@style/EditTextTheme" />
+
+                </android.support.design.widget.TextInputLayout>
+                <!--
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이름"
+                        android:textColor="@color/colorPrimaryDarkFont"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:theme="@style/EditTextTheme"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:textSize="15sp"
+                        android:hint="이름을 입력하세요."
+                        android:textColorHint="@color/colorAccentLight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="휴대폰 번호"
+                        android:textColor="@color/colorPrimaryDarkFont"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:theme="@style/EditTextTheme"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:hint="휴대폰 번호를 입력하세요."
+                        android:textColorHint="@color/colorAccentLight"
+                        android:textSize="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout> -->
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 </LinearLayout>

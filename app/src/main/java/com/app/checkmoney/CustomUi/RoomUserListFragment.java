@@ -65,8 +65,7 @@ public class RoomUserListFragment extends Fragment implements View.OnClickListen
 
     private void initView(){
         TextView button_manageuser = (TextView) view.findViewById(R.id.button_manage_user);
-        String button_text = button_manageuser.getText().toString();
-        button_manageuser.setText(Html.fromHtml("<u>" + button_text + "</u>"));
+        button_manageuser.setText(Html.fromHtml("<u>" + getString(R.string.text_user_management) + "</u>"));
         button_manageuser.setOnClickListener(this);
         user_list = createSampleUser();
 

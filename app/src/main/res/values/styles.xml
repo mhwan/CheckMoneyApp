@@ -14,7 +14,7 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="RegisterTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="RegisterTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryLight</item>
         <item name="windowActionBar">false</item>
@@ -69,5 +69,13 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">13dp</item>
+    </style>
+
+    <style name="CustomLoginDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/LoginDialogAnimation</item>
+    </style>
+    <style name="LoginDialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
     </style>
 </resources>

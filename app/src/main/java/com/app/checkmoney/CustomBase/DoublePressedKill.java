@@ -26,6 +26,6 @@ public class DoublePressedKill {
         }
         //2초이상 안지났으면 앱 종료
         else
-            AppUtility.getInstance().finishApplication();
+            AppUtility.getInstance().finishApplication(activity);
     }
 }

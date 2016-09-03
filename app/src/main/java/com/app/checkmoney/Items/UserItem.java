@@ -80,6 +80,6 @@ public class UserItem {
      * 돈 내는 사람 + 방 관리자
      * 돈 내는 사람 + 일반
      */
-    public enum ManageType { MANAGER, NO_MANAGER }
+    public enum ManageType { MANAGER, NO_MANAGER }   ;
     public enum ExchangeType { RECEIVER, GIVER }
 }
