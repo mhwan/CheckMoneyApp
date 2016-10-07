@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.checkmoney.Items.UserItem;
+import com.app.checkmoney.Items.RoomUserItem;
 import com.moneycheck.checkmoneyapp.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -22,7 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CustomProfileDialog extends Dialog {
     private Context context;
     private String name, phonenumber;
-    private UserItem.ExchangeType exchangeType;
+    private RoomUserItem.ExchangeType exchangeType;
     private boolean isPay = false;
     private View.OnClickListener call_listener, message_listener;
 
@@ -50,7 +50,7 @@ public class CustomProfileDialog extends Dialog {
         button_call.setOnClickListener(call_listener);
         button_message.setOnClickListener(message_listener);
 
-        if (exchangeType.equals(UserItem.ExchangeType.RECEIVER))
+        if (exchangeType.equals(RoomUserItem.ExchangeType.RECEIVER))
             sign_view.setImageResource(R.mipmap.image_sign_receiver);
         else {
             if (isPay)
@@ -60,7 +60,7 @@ public class CustomProfileDialog extends Dialog {
         }
     }
 
-    public void setExchangeType(UserItem.ExchangeType exchangeType) {
+    public void setExchangeType(RoomUserItem.ExchangeType exchangeType) {
         this.exchangeType = exchangeType;
     }
 

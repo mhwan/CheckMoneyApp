@@ -3,4 +3,6 @@
     <item name="fab_expand_menu_button" type="id"/>
     <item name="fab_label" type="id"/>
     <item name="linear_container" type="id" />
+    <item name="room_info_fragment" type="id" />
+    <item name="room_userlist_fragment" type="id" />
 </resources>

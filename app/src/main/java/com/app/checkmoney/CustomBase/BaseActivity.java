@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.checkmoney.Activity.UserSettingActivity;
+import com.app.checkmoney.CustomUi.CustomAlertDialog;
 import com.app.checkmoney.Util.DevelopeLog;
 import com.moneycheck.checkmoneyapp.R;
 
@@ -22,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private LinearLayout root_layout;
     private View new_layout;
     private ToolbarType type;
+    protected View toolbarview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +40,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        View toolberview = LayoutInflater.from(this).inflate(toolbarId, null);
+        toolbarview = LayoutInflater.from(this).inflate(toolbarId, null);
 
         if (type.equals(ToolbarType.SUB_TYPE)) {
-            TextView toolbar_title = (TextView) toolberview.findViewById(R.id.toolbar_title);
+            TextView toolbar_title = (TextView) toolbarview.findViewById(R.id.toolbar_title);
             toolbar_title.setText(getToolbarTitle());
-            toolberview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
+            toolbarview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (getResult())
-                        setResult(RESULT_OK);
-                    finishActivity();
+                    setResultForFinish();
                 }
             });
         } else if (type.equals(ToolbarType.MAIN_TYPE)) {
-            toolberview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
+            toolbarview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //설정 열기
@@ -60,10 +60,25 @@ public abstract class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+        } else if (type.equals(ToolbarType.BACK_TYPE)) {
+            TextView toolbar_title = (TextView) toolbarview.findViewById(R.id.toolbar_title);
+            toolbar_title.setText(getToolbarTitle());
+            toolbarview.findViewById(navigationIcon).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finishActivity();
+                }
+            });
+            toolbarview.findViewById(R.id.toolbar_okay).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setResultForFinish();
+                }
+            });
         }
 
         Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        getSupportActionBar().setCustomView(toolberview, layoutParams);
+        getSupportActionBar().setCustomView(toolbarview, layoutParams);
 
     }
 
@@ -73,9 +88,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         finishActivity();
     }
 
+
+    protected void startActivityWithAnim(Intent intent){
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in, R.anim.anim_keep);
+    }
+
+    protected void startActivityForResultWithAnim(Intent intent, int requestCode){
+        startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.anim_slide_in, R.anim.anim_keep);
+    }
     protected void finishActivity(){
-        //AppUtility.getInstance().finishActivity();
         finish();
+        overridePendingTransition(0, R.anim.anim_slide_out);
     }
     protected void setToolbar(int toolbarId, int navigationIconId, ToolbarType type) {
         this.toolbarId = toolbarId;
@@ -88,11 +113,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         root_layout.addView(new_layout);
     }
 
-    public enum ToolbarType{ MAIN_TYPE, SUB_TYPE }
+    public enum ToolbarType{ MAIN_TYPE, SUB_TYPE, BACK_TYPE }
     protected abstract String getToolbarTitle();
     protected abstract boolean getResult();
     protected abstract Activity getActivity();
 
+    protected void setResultForFinish(){
+        if (getResult())
+            setResult(RESULT_OK);
+        finishActivity();
+    }
+
+    protected void showUnknwonErrorDialog(){
+        final CustomAlertDialog dialog = new CustomAlertDialog(getContext());
+        dialog.setTitle(getString(R.string.text_error_title));
+        dialog.setMessage(getString(R.string.text_error_unknwon));
+        dialog.setPositiveButton(getString(R.string.okay), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
     public Context getContext(){
         return getActivity();
     }

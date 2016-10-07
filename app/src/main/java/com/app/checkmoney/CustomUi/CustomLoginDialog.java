@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -44,8 +45,9 @@ public class CustomLoginDialog extends Dialog {
         input_pw = (EditText) findViewById(R.id.input_pw);
         ImageButton button_login = (ImageButton) findViewById(R.id.button_login);
         button_login.setOnClickListener(login_listener);
-        TextView button_go_register = (TextView) findViewById(R.id.button_go_register);
-        button_go_register.setOnClickListener(register_listener);
+        TextView forget_password = (TextView) findViewById(R.id.button_go_register);
+        forget_password.setText(Html.fromHtml(context.getString(R.string.text_forget_password)));
+        forget_password.setOnClickListener(register_listener);
     }
 
     public void setListener(View.OnClickListener login_listener, View.OnClickListener register_listener){

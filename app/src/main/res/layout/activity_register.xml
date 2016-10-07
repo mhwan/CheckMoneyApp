@@ -82,7 +82,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:hint="이메일"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                         android:singleLine="true"
                         android:textColor="@color/colorAccentBlack"
                         android:textColorHint="@color/colorAccentLight"
@@ -136,6 +136,7 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputlayout_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextLabel">
@@ -146,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:ems="10"
+                        android:singleLine="true"
                         android:hint="@string/hint_name"
                         android:textColor="@color/colorAccentBlack"
                         android:textColorHint="@color/colorAccentLight"
@@ -157,6 +158,7 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/inputlayout_phnum"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextLabel">
 
@@ -167,6 +169,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:hint="@string/hint_phone_number"
+                        android:singleLine="true"
                         android:inputType="phone"
                         android:textColor="@color/colorAccentBlack"
                         android:textColorHint="@color/colorAccentLight"

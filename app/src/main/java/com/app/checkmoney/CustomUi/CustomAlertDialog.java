@@ -10,6 +10,7 @@ import android.text.InputType;
 import android.text.Selection;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,10 @@ public class CustomAlertDialog extends Dialog {
     private String title, message, hint, negative_text = getContext().getString(R.string.text_cancel), positive_text = getContext().getString(R.string.okay);
     private View.OnClickListener negative_listener = null, positive_listener = null;
     private inflateType type;
-    private int layoutId;
+    private int layoutId =0;
     private Context context;
     private View rootview;
+    private View customView;
     private EditText editText;
     private int inputType = InputType.TYPE_CLASS_TEXT;
 
@@ -49,7 +51,7 @@ public class CustomAlertDialog extends Dialog {
         TextView titleview = (TextView) findViewById(R.id.title_text);
         TextView positivebutton = (TextView) findViewById(R.id.positive_button);
         TextView negativebutton = (TextView) findViewById(R.id.negative_button);
-        if (title.equals("") || title.isEmpty())
+        if (title.equals("") || title.isEmpty() || title == null)
             titleview.setVisibility(View.GONE);
         else {
             titleview.setVisibility(View.VISIBLE);
@@ -83,6 +85,9 @@ public class CustomAlertDialog extends Dialog {
         }
     }
 
+    public View getDialogRootView(){
+        return rootview;
+    }
     public void setTitle(String title){
         this.title = title;
     }
@@ -106,6 +111,10 @@ public class CustomAlertDialog extends Dialog {
         this.layoutId = layoutId;
     }
 
+    public void setLayout(View view){
+        type = inflateType.LAYOUT;
+        this.customView = view;
+    }
     public void setNegativeButton(String negative_text, final View.OnClickListener listener){
         this.negative_text = negative_text;
         this.negative_listener = listener;
@@ -138,8 +147,17 @@ public class CustomAlertDialog extends Dialog {
     }
     private void inflateView(ViewGroup rootView){
         if (type.equals(inflateType.LAYOUT)) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(layoutId, rootView, false);
+            if (rootView instanceof RelativeLayout) {
+                RelativeLayout relativeLayout = (RelativeLayout) rootView;
+                relativeLayout.setGravity(Gravity.LEFT);
+            }
+            if (layoutId != 0 && customView == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view = inflater.inflate(layoutId, rootView, false);
+            }
+            else {
+                rootView.addView(customView);
+            }
         } else {
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

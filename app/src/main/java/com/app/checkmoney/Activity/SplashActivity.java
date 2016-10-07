@@ -25,6 +25,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         hideEverything();
+
         // 이미지 리소스 주소 넣어줄것
         setBackgroundImage(findViewById(R.id.logo_splash), R.mipmap.logo_login);
         handler.postDelayed(new Runnable() {

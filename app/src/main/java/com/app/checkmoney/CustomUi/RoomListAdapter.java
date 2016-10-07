@@ -25,6 +25,9 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
         this.roomListItems = items;
     }
 
+    public RoomListAdapter(Context context){
+        this.context = context;
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(context).inflate(R.layout.ui_item_room, parent, false);
@@ -55,6 +58,14 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
 
     }
 
+    public void refreshAdapter(ArrayList<RoomListItem> list){
+        if (roomListItems != null){
+            roomListItems.clear();
+            roomListItems.addAll(list);
+        } else
+            roomListItems = list;
+        notifyDataSetChanged();
+    }
     public RoomListItem getItem(int position){
         return roomListItems.get(position);
     }

@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="32dp"
         android:orientation="vertical">
 
         <com.kakao.usermgmt.LoginButton
@@ -74,46 +74,11 @@
 
         </FrameLayout> -->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
-
-            <TextView
-                android:id="@+id/text_or"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:text="또는"
-                android:textColor="#defaed"
-                android:textSize="12sp" />
-
-            <View
-                android:layout_width="12dp"
-                android:layout_height="0.8dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/text_or"
-                android:background="#a1f4d7" />
-
-            <View
-                android:layout_width="12dp"
-                android:layout_height="0.8dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/text_or"
-                android:background="#a1f4d7" />
-        </RelativeLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:foreground="?android:attr/selectableItemBackground">
 
             <RelativeLayout
@@ -134,5 +99,18 @@
                     android:textStyle="bold" />
             </RelativeLayout>
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/button_go_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/colorWhite"
+            android:text="@string/text_register_message"/>
     </com.app.checkmoney.CustomUi.FadeInLinearlayout>
 </RelativeLayout>

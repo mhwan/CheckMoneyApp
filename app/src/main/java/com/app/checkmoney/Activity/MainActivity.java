@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private DoublePressedKill doublePressed;
+    private RoomListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +33,13 @@ public class MainActivity extends BaseActivity {
     private void initView(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_room);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RoomListAdapter(this, createSampleRoom()));
+        adapter = new RoomListAdapter(this);
+        recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, RoomActivity.class);
-                startActivity(intent);
+                startActivityWithAnim(intent);
             }
 
             @Override
@@ -50,12 +52,17 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateRoomActivity.class);
-                startActivity(intent);
+                startActivityWithAnim(intent);
             }
         });
 
+
+        refreshView();
     }
 
+    private void refreshView(){
+        adapter.refreshAdapter(createSampleRoom());
+    }
 
     //임시로 방 데이터 생성 (테스트
     private ArrayList<RoomListItem> createSampleRoom(){

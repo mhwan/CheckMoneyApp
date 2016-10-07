@@ -38,7 +38,7 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:text="메시지 보내기"
-                android:textSize="17sp"/>
+                android:textSize="18sp"/>
         </LinearLayout>
 
     </RelativeLayout>

@@ -1,8 +1,10 @@
 package com.app.checkmoney.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -13,11 +15,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.app.checkmoney.CustomBase.BaseActivity;
+import com.app.checkmoney.CustomBase.RequestPermission;
 import com.app.checkmoney.CustomUi.CustomAlertDialog;
 import com.app.checkmoney.CustomUi.CustomInputPreference;
+import com.app.checkmoney.Util.AppUtility;
+import com.app.checkmoney.Util.ImageLoaderUtility;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.moneycheck.checkmoneyapp.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserSettingActivity extends BaseActivity {
     public static final String KEY_PREFERENCE_NAME = "key_preference_name";
@@ -27,13 +35,42 @@ public class UserSettingActivity extends BaseActivity {
     public static final String KEY_PREFERENCE_APP_INFO = "key_preference_app_info";
     public static final String KEY_PREFERENCE_LOGOUT = "key_preference_logout";
     public static final String KEY_PREFERENCE_REMOVE_ACCOUNT = "key_preference_remove_account";
+
+    private CircleImageView image_profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setFromBaseView(R.layout.activity_user_setting);
         setToolbar(R.layout.layout_base_toolbar, R.id.toolbar_close, ToolbarType.SUB_TYPE);
+
+        image_profile = (CircleImageView) findViewById(R.id.image_profile);
+        findViewById(R.id.button_edit_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (new RequestPermission(getContext(), RequestPermission.WRITE_EXTERNAL_STORAGE_TYPE).isGranted()) {
+                    openPhotoPicker();
+                }
+            }
+        });
         getFragmentManager().beginTransaction()
                 .replace(R.id.frame_setting, new SettingFragment()).commit();
+    }
+
+    private void openPhotoPicker() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.text_pick_image)), AppUtility.BaseDataType.PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AppUtility.BaseDataType.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            //로더가init되지 않았을 수 있으므로 init
+            ImageLoaderUtility.getInstance().initImageLoader();
+            ImageLoader.getInstance().displayImage(data.getData().toString(), image_profile, ImageLoaderUtility.getInstance().getProfileImageOptions());
+        }
     }
 
     @Override
@@ -50,6 +87,8 @@ public class UserSettingActivity extends BaseActivity {
     protected Activity getActivity() {
         return UserSettingActivity.this;
     }
+
+
 
     public static class SettingFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener{
         private Preference pref_name, pref_phone, pref_alarm, pref_appInfo, pref_logout, pref_leave_member;
@@ -71,13 +110,12 @@ public class UserSettingActivity extends BaseActivity {
             pref_name.setOnPreferenceClickListener(this);
             pref_phone.setOnPreferenceClickListener(this);
             pref_appver.setOnPreferenceClickListener(this);
-            pref_appver.setNewSignView();
             pref_appInfo.setOnPreferenceClickListener(this);
             pref_logout.setOnPreferenceClickListener(this);
             pref_leave_member.setOnPreferenceClickListener(this);
 
             //이름, 휴대폰번호 서머리 내용을 프리퍼런스 값 넣어줘야함
-
+            pref_appver.setSummary(AppUtility.getInstance().getInstalledVersion());
         }
 
         @Override
@@ -89,6 +127,10 @@ public class UserSettingActivity extends BaseActivity {
             list.setDivider(new ColorDrawable(ContextCompat.getColor(getActivity(), R.color.colorPrimarybg)));
             list.setDividerHeight(3);
 
+        }
+
+        private boolean islastestAppVersion(){
+            return false;
         }
 
         @Override
@@ -139,18 +181,16 @@ public class UserSettingActivity extends BaseActivity {
                 dialog.show();
                 return true;
             } else if (key.equals(pref_appver.getKey())) {
+                if (islastestAppVersion())
+                    Toast.makeText(getActivity(), getString(R.string.text_lastest_app_version), Toast.LENGTH_SHORT).show();
+                else
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.app.mhwan.easymessage")));
                 return true;
             } else if (key.equals(pref_appInfo.getKey())) {
                 return true;
             } else if (key.equals(pref_logout.getKey())) {
-                UserManagement.requestLogout(new LogoutResponseCallback() {
-                    @Override
-                    public void onCompleteLogout() {
-                        //로그아웃 성공
-                        resetUser();
-                        Toast.makeText(getActivity(), getString(R.string.text_logout_kakao_account), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                //logoutUser();
+
                 return true;
             } else if (key.equals(pref_leave_member.getKey())) {
                 return true;
@@ -158,10 +198,19 @@ public class UserSettingActivity extends BaseActivity {
             return false;
         }
 
-        private void resetUser(){
-            SharedPreferences preferences = getPreferenceManager().getSharedPreferences();
-            setValue(preferences, pref_phone, KEY_PREFERENCE_PHONE, "");
-            setValue(preferences, pref_name, KEY_PREFERENCE_NAME, "");
+        private void logoutUser(){
+            //카카오 유저일 경우
+            UserManagement.requestLogout(new LogoutResponseCallback() {
+                @Override
+                public void onCompleteLogout() {
+                    Toast.makeText(getActivity(), getString(R.string.text_logout_kakao_account), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            Intent intent = new Intent(getActivity(), SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
 
         }
 

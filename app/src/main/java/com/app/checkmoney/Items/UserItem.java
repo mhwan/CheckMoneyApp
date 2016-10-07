@@ -1,52 +1,16 @@
 package com.app.checkmoney.Items;
 
+import java.io.Serializable;
+
 /**
- * Created by Mhwan on 2016. 8. 25..
+ * Created by Mhwan on 2016. 9. 7..
  */
-public class UserItem {
+public class UserItem implements Serializable{
     private String name, phoneNumber;
-    private ManageType mtype;
-    private ExchangeType etype;
-    private boolean ispay = false;
-    private boolean newNotify = false;
 
-    public UserItem(String name, String phoneNumber, ManageType mtype, ExchangeType etype) {
+    public UserItem(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.mtype = mtype;
-        this.etype = etype;
-    }
-
-    public UserItem(String name, String phoneNumber, ManageType mtype, ExchangeType etype, boolean ispay) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.mtype = mtype;
-        this.etype = etype;
-        this.ispay = ispay;
-    }
-
-    public ExchangeType getEtype() {
-        return etype;
-    }
-
-    public void setEtype(ExchangeType etype) {
-        this.etype = etype;
-    }
-
-    public boolean ispay() {
-        return ispay;
-    }
-
-    public void setIspay(boolean ispay) {
-        this.ispay = ispay;
-    }
-
-    public ManageType getMtype() {
-        return mtype;
-    }
-
-    public void setMtype(ManageType mtype) {
-        this.mtype = mtype;
     }
 
     public String getName() {
@@ -64,22 +28,4 @@ public class UserItem {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public boolean isNewNotify() {
-        return newNotify;
-    }
-
-    public void setNewNotify(boolean newNotify) {
-        this.newNotify = newNotify;
-    }
-
-    /**
-     * 사용자 유형
-     * 돈 받는 사람 + 방 관리자
-     * 돈 받는 사람 + 일반
-     * 돈 내는 사람 + 방 관리자
-     * 돈 내는 사람 + 일반
-     */
-    public enum ManageType { MANAGER, NO_MANAGER }   ;
-    public enum ExchangeType { RECEIVER, GIVER }
 }

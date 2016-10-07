@@ -73,8 +73,9 @@ public class CustomBottomButton extends RelativeLayout {
         int bgcolor = attrArray.getColor(R.styleable.CustomBottomButton_button_color, ContextCompat.getColor(context, R.color.colorPrimary));
         int rippleId = attrArray.getResourceId(R.styleable.CustomBottomButton_button_ripple, 0);
         boolean isRipple = attrArray.getBoolean(R.styleable.CustomBottomButton_ripple_visible, true);
-
+        int textsize = (int) (attrArray.getDimension(R.styleable.CustomBottomButton_text_size, 0)/context.getResources().getDisplayMetrics().density);
         setButton_text(text);
+        setButtonTextSize(textsize);
         setButton_icon(resourceId);
         setButtonBackground(bgcolor);
         setButtonRipple(rippleId, isRipple);
@@ -82,6 +83,11 @@ public class CustomBottomButton extends RelativeLayout {
         attrArray.recycle();
     }
 
+    public void setButtonTextSize(int size){
+        if (size<=0)
+            return;
+        button_text.setTextSize(size);
+    }
     public void setButton_text(String text){
         button_text.setText(text);
     }
